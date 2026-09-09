@@ -9,17 +9,26 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@types/leaflet": "^1.9.22",
     "date-fns": "^4.4.0",
     "dotenv": "17.3.1",
     "drizzle-orm": "0.45.2",
     "leaflet": "^1.9.4",
+=======
+    "date-fns": "^4.4.0",
+    "dotenv": "17.3.1",
+    "drizzle-orm": "0.45.2",
+>>>>>>> cdaad49 (Initial commit)
     "lucide-react": "^1.41.0",
     "next": "16.2.6",
     "pg": "8.20.0",
     "react": "19.2.6",
     "react-dom": "19.2.6",
+<<<<<<< HEAD
     "react-leaflet": "^5.0.0",
+=======
+>>>>>>> cdaad49 (Initial commit)
     "recharts": "^3.10.1"
   },
   "devDependencies": {
