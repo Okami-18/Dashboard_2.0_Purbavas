@@ -94,10 +94,10 @@ export default function Header({
           <div className="hidden lg:flex items-center gap-2 bg-slate-800/60 border border-slate-700/40 rounded-lg px-3 py-1.5">
             <Clock size={12} className="text-teal-400" />
             <div className="text-right">
-              <p className="text-xs font-mono font-bold text-white leading-tight">
+              <p className="text-xs font-mono font-bold text-white leading-tight" suppressHydrationWarning>
                 {formatTime(currentTime)}
               </p>
-              <p className="text-[10px] text-slate-500">{formatDate(currentTime)}</p>
+              <p className="text-[10px] text-slate-500" suppressHydrationWarning>{formatDate(currentTime)}</p>
             </div>
           </div>
 

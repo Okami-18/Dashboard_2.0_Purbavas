@@ -1,13 +1,13 @@
 "use client";
 
-import { Cpu, AlertTriangle, Wind, MapPin, TrendingUp, TrendingDown, Minus } from "lucide-react";
+import { Cpu, AlertTriangle, MapPin, TrendingUp, TrendingDown, Minus } from "lucide-react";
 
 interface KpiCardsProps {
   totalNodes: number;
   onlineNodes: number;
   criticalAlerts: number;
   activeAlerts: number;
-  avgAQI: number;
+  avgAQI?: number;
   highestRiskZone: string;
 }
 
@@ -17,23 +17,14 @@ function TrendIcon({ trend }: { trend: "up" | "down" | "flat" }) {
   return <Minus size={12} className="text-slate-500" />;
 }
 
-function AqiGrade(aqi: number) {
-  if (aqi <= 50) return { label: "Good", color: "text-green-400" };
-  if (aqi <= 100) return { label: "Moderate", color: "text-yellow-400" };
-  if (aqi <= 150) return { label: "Unhealthy", color: "text-orange-400" };
-  return { label: "Hazardous", color: "text-red-400" };
-}
-
 export default function KpiCards({
   totalNodes,
   onlineNodes,
   criticalAlerts,
   activeAlerts,
-  avgAQI,
   highestRiskZone,
 }: KpiCardsProps) {
   const offlineNodes = totalNodes - onlineNodes;
-  const aqiGrade = AqiGrade(avgAQI);
 
   const cards = [
     {
@@ -81,28 +72,6 @@ export default function KpiCards({
       sparkColor: "bg-red-400",
     },
     {
-      title: "Regional AQI",
-      value: `${avgAQI}`,
-      sub: `PM2.5 average · ${aqiGrade.label}`,
-      icon: <Wind size={20} />,
-      iconBg: "bg-blue-500/15 border-blue-500/30",
-      iconColor: "text-blue-400",
-      accentColor: "border-l-blue-500",
-      valueSuffix: (
-        <span className="text-sm font-normal text-slate-500 ml-1">µg/m³</span>
-      ),
-      badge: aqiGrade.label,
-      badgeColor:
-        avgAQI <= 50
-          ? "bg-green-500/15 text-green-400 border-green-500/30"
-          : avgAQI <= 100
-            ? "bg-yellow-500/15 text-yellow-400 border-yellow-500/30"
-            : "bg-orange-500/15 text-orange-400 border-orange-500/30",
-      trend: "up" as const,
-      sparkBar: null,
-      sparkColor: "bg-blue-400",
-    },
-    {
       title: "Highest Risk Zone",
       value: "Zone A",
       sub: highestRiskZone,
@@ -120,7 +89,7 @@ export default function KpiCards({
   ];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
       {cards.map((card, i) => (
         <div
           key={i}

@@ -137,6 +137,12 @@ export default function Dashboard() {
     );
   }, []);
 
+  const handleAcknowledgeAll = useCallback(() => {
+    setAlerts((prev) =>
+      prev.map((a) => (a.riskLevel !== "Normal" ? { ...a, acknowledged: true } : a))
+    );
+  }, []);
+
   const criticalCount = alerts.filter(
     (a) => a.riskLevel === "Critical" && !a.acknowledged
   ).length;
@@ -222,6 +228,7 @@ export default function Dashboard() {
                 onNodeClick={handleNodeClick}
                 onAcknowledge={handleAcknowledge}
                 onNotify={handleNotify}
+                onAcknowledgeAll={handleAcknowledgeAll}
               />
             )}
 
@@ -245,6 +252,7 @@ export default function Dashboard() {
                   alerts={alerts}
                   onAcknowledge={handleAcknowledge}
                   onNotify={handleNotify}
+                  onAcknowledgeAll={handleAcknowledgeAll}
                 />
               </div>
             )}

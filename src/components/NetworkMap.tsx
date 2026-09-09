@@ -103,15 +103,9 @@ export default function NetworkMap({
       ref={containerRef}
       className="relative w-full h-full bg-slate-900 rounded-xl overflow-hidden border border-slate-700/60"
     >
-      {/* Background terrain map */}
+      {/* Background terrain styling */}
       <div
-        className="absolute inset-0 opacity-20"
-        style={{
-          backgroundImage: "url('/images/terrain-map.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          filter: "hue-rotate(180deg) saturate(0.5) brightness(0.6)",
-        }}
+        className="absolute inset-0 opacity-40 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-teal-950/30 via-slate-900/60 to-slate-950"
       />
 
       {/* Grid overlay */}
